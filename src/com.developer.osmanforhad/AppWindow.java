@@ -5,6 +5,7 @@ import javax.swing.JLabel;
 import javax.swing.Timer;
 
 import java.awt.GridLayout;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class AppWindow extends JFrame{
@@ -49,8 +50,11 @@ public class AppWindow extends JFrame{
         Timer timer = new Timer(1000, new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
-                //String dateTime = new Date().toString();
-                String dateTime = new Date().toLocaleString();
+                //Time Formating by SimpleDateFormat class
+                Date date = new Date();
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh : mm : ss a");
+                String dateTime = simpleDateFormat.format(date);
+                //set date time inside the clock label
                 clock.setText(dateTime);
             }
         });
