@@ -2,7 +2,10 @@ import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.Timer;
+
 import java.awt.GridLayout;
+import java.util.Date;
 
 public class AppWindow extends JFrame{
 
@@ -14,10 +17,12 @@ public class AppWindow extends JFrame{
     //__Constructor Method__//
     AppWindow(){
         super.setTitle("Digital Clock by osman forhad");
-        super.setSize(400, 400);
+        super.setSize(620, 620);
         setLocation(300, 50);
         //Calling the User Interface Method
         this.createGUI();
+          //Calling the digitalClock Method
+          digitalClock();
         super.setVisible(true);
     }
 
@@ -37,6 +42,18 @@ public class AppWindow extends JFrame{
         this.add(heading);
         this.add(clock);
 
+    }
+
+    //__Digital Clock Method__//
+    public void digitalClock(){
+        Timer timer = new Timer(1000, new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                String dateTime = new Date().toString();
+                clock.setText(dateTime);
+            }
+        });
+        timer.start();
     }
 
 }
